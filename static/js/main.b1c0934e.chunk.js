@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-hooks-todo-list"]=this["webpackJsonpreact-hooks-todo-list"]||[]).push([[0],[,,,function(t,e,n){t.exports=n(10)},,,,,function(t,e,n){},function(t,e,n){},function(t,e,n){"use strict";n.r(e);var o=n(0),c=n.n(o),r=n(2),s=n.n(r);n(8),n(9);var a=function(){return c.a.createElement("div",{className:"App"})};s.a.render(c.a.createElement(a,null),document.getElementById("root"))}],[[3,1,2]]]);
-//# sourceMappingURL=main.b1c0934e.chunk.js.map
