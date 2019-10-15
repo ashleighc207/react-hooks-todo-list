@@ -21,13 +21,26 @@ const TodoApp = () => {
   const deleteItem = id => {
     setItems(items.filter(i => i.id !== id));
   };
+  const markItemComplete = id => {
+    let updatedItems = items.map(item => {
+      if (item.id === id) {
+        item.completed = true;
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  };
   return (
     <div className="TodoApp">
       <div className="TodoApp-heading">
         <h2 className="TodoApp-title">Things to do</h2>
         <i className="fas fa-plus TodoApp-icon" onClick={handleClick}></i>
       </div>
-      <TodoList items={items} deleteItem={deleteItem} />
+      <TodoList
+        items={items}
+        markItemComplete={markItemComplete}
+        deleteItem={deleteItem}
+      />
       {modalOpen && <TodoForm closeModal={closeModal} addItem={addItem} />}
     </div>
   );

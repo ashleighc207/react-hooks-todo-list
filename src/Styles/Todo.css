@@ -31,3 +31,7 @@
   color: #424242;
   margin-right: 20px;
 }
+
+.complete {
+  text-decoration: line-through;
+}
