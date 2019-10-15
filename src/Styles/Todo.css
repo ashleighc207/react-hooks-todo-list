@@ -29,7 +29,8 @@
   margin-left: 20px;
   font-size: 20px;
   color: #424242;
-  margin-right: 20px;
+  margin-right: 10px;
+  color: rgba(54, 92, 123, 1);
 }
 
 .complete {
@@ -40,4 +41,31 @@
 
 .Todo-check {
   display: flex;
+}
+
+.Todo-edit-form {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Todo-edit-form-input {
+  background: transparent;
+  width: 50%;
+  border: none;
+  border-bottom: 2px solid rgba(54, 92, 123, 1);
+  font-size: 16px;
+  padding: 5px 3px;
+  margin: 16px 0px;
+  margin-left: 20px;
+}
+
+.Todo-edit-form-input:focus {
+  outline: none;
+}
+
+.Todo-edit-form-icon {
+  margin-right: 10px;
+  color: rgba(54, 92, 123, 1);
 }
