@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/TodoForm.css";
+import uuid from "uuid/v4";
 
-const TodoForm = () => {
+const TodoForm = props => {
+  const [inputVal, setInputVal] = useState("");
+  const handleClick = () => {
+    let item = { description: inputVal, id: uuid() };
+    props.addItem(item);
+  };
   return (
     <div className="TodoForm">
       <h5 className="TodoForm-heading">Add New Item</h5>
-      <textarea className="TodoForm-textarea" />
-      <button className="TodoForm-button">Add Item </button>
+      <textarea
+        className="TodoForm-textarea"
+        onChange={e => setInputVal(e.target.value)}
+      />
+      <div className="TodoForm-buttons">
+        <button className="TodoForm-button-textonly" onClick={props.closeModal}>
+          Cancel
+        </button>
+        <button className="TodoForm-button" onClick={handleClick}>
+          Add Item
+        </button>
+      </div>
     </div>
   );
 };
