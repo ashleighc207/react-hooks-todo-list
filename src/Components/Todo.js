@@ -2,6 +2,8 @@ import React from "react";
 import "../Styles/Todo.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const Todo = props => {
   const BlueCheckbox = withStyles({
@@ -17,7 +19,7 @@ const Todo = props => {
   props.item.completed ? (complete = "complete") : (complete = "");
   return (
     <div className="Todo">
-      <>
+      <div className="Todo-check">
         <BlueCheckbox
           checked={props.item.completed}
           onClick={() => props.markItemComplete(props.item.id)}
@@ -25,11 +27,14 @@ const Todo = props => {
         <p className={`Todo-description ${complete}`}>
           {props.item.description}
         </p>
-      </>
-      <i
-        className="fas fa-times Todo-icon"
-        onClick={() => props.deleteItem(props.item.id)}
-      ></i>
+      </div>
+      <div>
+        <EditIcon />
+        <DeleteIcon
+          onClick={() => props.deleteItem(props.item.id)}
+          className="Todo-icon"
+        />
+      </div>
     </div>
   );
 };

@@ -21,6 +21,15 @@ const TodoApp = () => {
   const deleteItem = id => {
     setItems(items.filter(i => i.id !== id));
   };
+  const editItem = (id, val) => {
+    let updatedItems = items.map(item => {
+      if (item.id === id) {
+        item.description = val;
+      }
+      return item;
+    });
+    setItems(updatedItems);
+  };
   const markItemComplete = id => {
     let updatedItems = items.map(item => {
       if (item.id === id) {

@@ -9,6 +9,10 @@ const TodoList = props => {
   const handleComplete = id => {
     props.markItemComplete(id);
   };
+
+  const handleEdit = (id, val) => {
+    props.editItem(id);
+  };
   return (
     <div className="TodoList">
       {props.items.length > 0 &&
@@ -18,6 +22,7 @@ const TodoList = props => {
               item={item}
               markItemComplete={handleComplete}
               deleteItem={handleDelete}
+              editItem={handleEdit}
               key={item.id}
             />
           );

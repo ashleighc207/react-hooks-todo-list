@@ -34,4 +34,10 @@
 
 .complete {
   text-decoration: line-through;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.Todo-check {
+  display: flex;
 }
