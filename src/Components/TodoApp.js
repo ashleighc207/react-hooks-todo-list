@@ -33,7 +33,7 @@ const TodoApp = () => {
   const markItemComplete = id => {
     let updatedItems = items.map(item => {
       if (item.id === id) {
-        item.completed = true;
+        item.completed = !item.completed;
       }
       return item;
     });
