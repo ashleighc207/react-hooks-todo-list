@@ -5,7 +5,7 @@ import uuid from "uuid/v4";
 const TodoForm = props => {
   const [inputVal, setInputVal] = useState("");
   const handleClick = () => {
-    let item = { description: inputVal, id: uuid() };
+    let item = { description: inputVal, id: uuid(), completed: false };
     props.addItem(item);
   };
   return (

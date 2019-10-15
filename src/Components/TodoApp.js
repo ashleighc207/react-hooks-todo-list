@@ -5,7 +5,7 @@ import "../Styles/TodoApp.css";
 
 const TodoApp = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [items, setItems] = useState("");
+  const [items, setItems] = useState([]);
   const handleClick = () => {
     setModalOpen(!modalOpen);
   };
