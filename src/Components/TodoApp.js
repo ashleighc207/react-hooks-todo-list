@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import "../Styles/TodoApp.css";
 
 const TodoApp = () => {
+  const initialItems = JSON.parse(window.localStorage.getItem("items") || []);
   const [modalOpen, setModalOpen] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(initialItems);
   const handleClick = () => {
     setModalOpen(!modalOpen);
   };
@@ -36,6 +37,9 @@ const TodoApp = () => {
     });
     setItems(updatedItems);
   };
+  useEffect(() => {
+    window.localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
   return (
     <div className="TodoApp">
       <div className="TodoApp-heading">
