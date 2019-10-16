@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Styles/TodoForm.css";
 import uuid from "uuid/v4";
 import useInputState from "../Hooks/useInputState";
