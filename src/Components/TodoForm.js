@@ -5,9 +5,11 @@ import useInputState from "../Hooks/useInputState";
 
 const TodoForm = props => {
   const [inputVal, handleValChange, reset] = useInputState("");
+
   const handleClick = () => {
     let item = { description: inputVal, id: uuid(), completed: false };
     props.addItem(item);
+    props.closeModal();
     reset();
   };
   return (
