@@ -8,8 +8,7 @@ This is a React todo list for creating and managing your todos.
 
 - See the site live here: https://ashleighc207.github.io/react-hooks-todo-list/
 
-<!-- <img src="example.png" alt="Example image" width="350" align="center"/>
-<img src="example-1.png" alt="Example image" width="350" align="center"/> -->
+<img src="example.png" alt="Example image" width="350" align="center"/>
 
 ## How to Launch the App
 
