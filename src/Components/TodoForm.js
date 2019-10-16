@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Styles/TodoForm.css";
 import uuid from "uuid/v4";
 import useInputState from "../Hooks/useInputState";
+import { ItemContext } from "../Context/Item.context";
+import { ModalContext } from "../Context/Modal.context";
 
 const TodoForm = props => {
   const [inputVal, handleValChange, reset] = useInputState("");
-
+  const { addItem } = useContext(ItemContext);
+  const { closeModal } = useContext(ModalContext);
   const handleClick = () => {
     let item = { description: inputVal, id: uuid(), completed: false };
-    props.addItem(item);
-    props.closeModal();
+    addItem(item);
+    closeModal();
     reset();
   };
   return (
@@ -21,7 +24,7 @@ const TodoForm = props => {
         onChange={handleValChange}
       />
       <div className="TodoForm-buttons">
-        <button className="TodoForm-button-textonly" onClick={props.closeModal}>
+        <button className="TodoForm-button-textonly" onClick={closeModal}>
           Cancel
         </button>
         <button className="TodoForm-button" onClick={handleClick}>

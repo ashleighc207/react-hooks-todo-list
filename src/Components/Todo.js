@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Styles/Todo.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import { withStyles } from "@material-ui/core";
@@ -8,14 +8,14 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import CheckIcon from "@material-ui/icons/Check";
 import useToggleState from "../Hooks/useToggleState";
 import useInputState from "../Hooks/useInputState";
+import { ItemContext } from "../Context/Item.context";
 
-const Todo = props => {
+const Todo = ({ id, description, completed }) => {
+  const { markItemComplete, deleteItem, editItem } = useContext(ItemContext);
   const [isEditing, toggleIsEditing] = useToggleState();
-  const [inputVal, handleInputChange, reset] = useInputState(
-    props.item.description
-  );
+  const [inputVal, handleInputChange, reset] = useInputState(description);
   const handleClick = () => {
-    props.editItem(props.item.id, inputVal);
+    editItem(id, inputVal);
     toggleIsEditing();
   };
   const BlueCheckbox = withStyles({
@@ -28,7 +28,7 @@ const Todo = props => {
     checked: {}
   })(props => <Checkbox color="default" {...props} />);
   let complete;
-  props.item.completed ? (complete = "complete") : (complete = "");
+  completed ? (complete = "complete") : (complete = "");
   return (
     <div className="Todo">
       {isEditing ? (
@@ -51,19 +51,14 @@ const Todo = props => {
         <>
           <div className="Todo-check">
             <BlueCheckbox
-              checked={props.item.completed}
-              onClick={() => props.markItemComplete(props.item.id)}
+              checked={completed}
+              onClick={() => markItemComplete(id)}
             />
-            <p className={`Todo-description ${complete}`}>
-              {props.item.description}
-            </p>
+            <p className={`Todo-description ${complete}`}>{description}</p>
           </div>
           <div>
             <EditIcon onClick={toggleIsEditing} className="Todo-icon" />
-            <DeleteIcon
-              onClick={() => props.deleteItem(props.item.id)}
-              className="Todo-icon"
-            />
+            <DeleteIcon onClick={() => deleteItem(id)} className="Todo-icon" />
           </div>
         </>
       )}

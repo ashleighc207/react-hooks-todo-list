@@ -1,35 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
 import "../Styles/TodoApp.css";
 import useItemState from "../Hooks/useItemState";
 import useModalState from "../Hooks/useModalState";
+import { ItemProvider } from "../Context/Item.context";
+import { ModalContext } from "../Context/Modal.context";
 
 const TodoApp = () => {
-  const initialItems = JSON.parse(window.localStorage.getItem("items") || []);
-  const {
-    items,
-    addItem,
-    deleteItem,
-    editItem,
-    markItemComplete
-  } = useItemState(initialItems);
-
-  const { modalOpen, closeModal, openModal } = useModalState(false);
-
+  const { modalOpen, closeModal, openModal } = useContext(ModalContext);
   return (
     <div className="TodoApp">
       <div className="TodoApp-heading">
         <h2 className="TodoApp-title">Things to do</h2>
         <i className="fas fa-plus TodoApp-icon" onClick={openModal}></i>
       </div>
-      <TodoList
-        items={items}
-        markItemComplete={markItemComplete}
-        deleteItem={deleteItem}
-        editItem={editItem}
-      />
-      {modalOpen && <TodoForm closeModal={closeModal} addItem={addItem} />}
+      <ItemProvider>
+        <TodoList />
+        {modalOpen && <TodoForm closeModal={closeModal} />}
+      </ItemProvider>
     </div>
   );
 };
