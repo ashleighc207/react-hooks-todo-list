@@ -11,11 +11,11 @@ import useInputState from "../Hooks/useInputState";
 import { ItemContext } from "../Context/Item.context";
 
 const Todo = ({ id, description, completed }) => {
-  const { markItemComplete, deleteItem, editItem } = useContext(ItemContext);
+  const { dispatch } = useContext(ItemContext);
   const [isEditing, toggleIsEditing] = useToggleState();
   const [inputVal, handleInputChange, reset] = useInputState(description);
   const handleClick = () => {
-    editItem(id, inputVal);
+    dispatch({ type: "EDIT_ITEM", id: id, val: inputVal });
     toggleIsEditing();
   };
   const BlueCheckbox = withStyles({
@@ -52,13 +52,16 @@ const Todo = ({ id, description, completed }) => {
           <div className="Todo-check">
             <BlueCheckbox
               checked={completed}
-              onClick={() => markItemComplete(id)}
+              onClick={() => dispatch({ type: "MARK_ITEM_COMPLETE", id: id })}
             />
             <p className={`Todo-description ${complete}`}>{description}</p>
           </div>
           <div>
             <EditIcon onClick={toggleIsEditing} className="Todo-icon" />
-            <DeleteIcon onClick={() => deleteItem(id)} className="Todo-icon" />
+            <DeleteIcon
+              onClick={() => dispatch({ type: "DELETE_ITEM", id: id })}
+              className="Todo-icon"
+            />
           </div>
         </>
       )}

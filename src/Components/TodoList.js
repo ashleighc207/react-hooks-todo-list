@@ -4,19 +4,8 @@ import "../Styles/TodoList.css";
 import { ItemContext } from "../Context/Item.context";
 
 const TodoList = props => {
-  const { items, markItemComplete, deleteItem, editItem } = useContext(
-    ItemContext
-  );
-  const handleDelete = id => {
-    deleteItem(id);
-  };
-  const handleComplete = id => {
-    markItemComplete(id);
-  };
+  const { items } = useContext(ItemContext);
 
-  const handleEdit = (id, val) => {
-    editItem(id, val);
-  };
   return (
     <div className="TodoList">
       {items.length > 0 &&

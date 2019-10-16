@@ -1,14 +1,14 @@
-function ModalReducer(state, action) {
+const ModalReducer = (state, action) => {
   switch (action.type) {
-    case closeModal:
-      () => {
+    case "CLOSE_MODAL":
+      return () => {
         setModalOpen(false);
       };
-    case openModal:
-      () => {
+    case "OPEN_MODAL":
+      return () => {
         setModalOpen(!modalOpen);
       };
   }
-}
+};
 
 export default ModalReducer;

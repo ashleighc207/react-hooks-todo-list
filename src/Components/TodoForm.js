@@ -7,11 +7,11 @@ import { ModalContext } from "../Context/Modal.context";
 
 const TodoForm = props => {
   const [inputVal, handleValChange, reset] = useInputState("");
-  const { addItem } = useContext(ItemContext);
+  const { dispatch } = useContext(ItemContext);
   const { closeModal } = useContext(ModalContext);
   const handleClick = () => {
     let item = { description: inputVal, id: uuid(), completed: false };
-    addItem(item);
+    dispatch({ type: "ADD_ITEM", item: item });
     closeModal();
     reset();
   };
