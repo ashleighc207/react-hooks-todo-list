@@ -11,7 +11,7 @@ const TodoList = props => {
   };
 
   const handleEdit = (id, val) => {
-    props.editItem(id);
+    props.editItem(id, val);
   };
   return (
     <div className="TodoList">

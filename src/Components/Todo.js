@@ -14,6 +14,10 @@ const Todo = props => {
   const [inputVal, handleInputChange, reset] = useInputState(
     props.item.description
   );
+  const handleClick = () => {
+    props.editItem(props.item.id, inputVal);
+    toggleIsEditing();
+  };
   const BlueCheckbox = withStyles({
     root: {
       color: "rgba(54, 92, 123, 0.8)",
@@ -32,11 +36,11 @@ const Todo = props => {
           <input
             type="text"
             value={inputVal}
-            change={handleInputChange}
+            onChange={handleInputChange}
             className="Todo-edit-form-input"
           />
           <div className="Todo-edit-form-icons">
-            <CheckIcon className="Todo-edit-form-icon" />
+            <CheckIcon className="Todo-edit-form-icon" onClick={handleClick} />
             <CancelIcon
               onClick={toggleIsEditing}
               className="Todo-edit-form-icon"

@@ -23,10 +23,7 @@ const TodoApp = () => {
   };
   const editItem = (id, val) => {
     let updatedItems = items.map(item => {
-      if (item.id === id) {
-        item.description = val;
-      }
-      return item;
+      return item.id === id ? { ...item, description: val } : item;
     });
     setItems(updatedItems);
   };
@@ -49,6 +46,7 @@ const TodoApp = () => {
         items={items}
         markItemComplete={markItemComplete}
         deleteItem={deleteItem}
+        editItem={editItem}
       />
       {modalOpen && <TodoForm closeModal={closeModal} addItem={addItem} />}
     </div>
