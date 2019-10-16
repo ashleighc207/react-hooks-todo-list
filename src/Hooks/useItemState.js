@@ -1,7 +1,8 @@
 import { useState } from "react";
+import useLocalStorageState from "../Hooks/useLocalStorageState";
 
 export default initialItems => {
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useLocalStorageState("items", initialItems);
 
   return {
     items,

@@ -17,9 +17,6 @@ const TodoApp = () => {
 
   const { modalOpen, closeModal, openModal } = useModalState(false);
 
-  useEffect(() => {
-    window.localStorage.setItem("items", JSON.stringify(items));
-  }, [items]);
   return (
     <div className="TodoApp">
       <div className="TodoApp-heading">

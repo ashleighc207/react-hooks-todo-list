@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default modalStatus => {
-  console.log(modalStatus);
   const [modalOpen, setModalOpen] = useState(modalStatus);
   return {
     modalOpen,
